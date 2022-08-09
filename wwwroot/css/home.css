@@ -1,0 +1,31 @@
+body {
+    background: #757F9A; /* fallback for old browsers */
+    background: -webkit-linear-gradient(to left, #D7DDE8, #757F9A); /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to left, #D7DDE8, #757F9A); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+.alert {
+    width: 28.125rem;
+    left: 50%;
+    margin-left: -14.063rem;
+    margin-top: 7.5%;
+    padding: 1.25rem;
+    background-color: #5291EF;
+    color: white;
+    position: fixed;
+}
+
+.closemsg {
+    margin-left: 0.938rem;
+    color: white;
+    font-weight: bold;
+    float: right;
+    font-size: 1.375rem;
+    line-height: 1.25rem;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+    .closemsg:hover {
+        color: black;
+    }

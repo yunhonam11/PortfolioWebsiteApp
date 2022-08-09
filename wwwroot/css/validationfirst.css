@@ -1,0 +1,40 @@
+body {
+    background: #757F9A; /* fallback for old browsers */
+    background: -webkit-linear-gradient(to left, #D7DDE8, #757F9A); /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to left, #D7DDE8, #757F9A); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+.wrapper {
+    overflow: hidden;
+    width: 30rem;
+    height: 22.5rem;
+    margin: auto;
+    margin-top: 15%;
+    padding: 4.688rem;
+}
+
+    .wrapper h3 {
+        text-align: center;
+        font-family: fantasy;
+        color: #696969;
+        margin-top: 1%;
+    }
+
+    .wrapper p {
+        margin-top: 12.5%;
+        text-align: center;
+        font-family: fantasy;
+        color: #A9A9A9;
+    }
+
+    .wrapper .send-btn {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 12.5%;
+        background: #303030;
+    }
+
+        .wrapper .send-btn:hover {
+            background: #400000;
+        }

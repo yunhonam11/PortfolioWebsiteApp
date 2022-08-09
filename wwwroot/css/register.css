@@ -1,0 +1,116 @@
+body {
+    background: #757F9A; /* fallback for old browsers */
+    background: -webkit-linear-gradient(to left, #D7DDE8, #757F9A); /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to left, #D7DDE8, #757F9A); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+.error-msg ul {
+    list-style-type: none;
+}
+
+.wrapper {
+    width: 62.5rem;
+    height: 31.25rem;
+    background: white;
+    border-radius: 0.625rem;
+    box-shadow: 0 0.125rem 1.25rem 0.125rem #1f1f1f1a;
+    margin: auto;
+    margin-top: 7.813rem;
+    overflow: hidden;
+}
+
+.form-left {
+    float: left;
+    width: 28.125rem;
+    height: 31.25rem;
+    background: #778899;
+}
+    .form-left h2 {
+        font-family: fantasy;
+        color: #DCDCDC;
+        margin-top: 20%;
+    }
+
+.form-right {
+    float: right;
+    width: 34.375rem;
+    height: 31.25rem;
+    padding: 0rem 3.125rem 0rem 3.125rem;
+}
+    .form-right h2 {
+        font-family: fantasy;
+        color: #696969;
+        margin-top: 5%;
+    }
+    
+    .form-right form {
+        margin-top: 5%;
+    }
+
+    .form-right .pass-div {
+        margin-top: 4%;
+    }
+
+    .form-right .input-label {
+        font-weight: 600;
+        font-size: 0.938rem;
+        color: #666;
+    }
+
+    .form-right .input-field {
+        margin-top: 2.5%;
+        padding: 0.625rem 0.938rem;
+        border: 0.063rem solid #e5e5e5;
+        border-top-left-radius: 0.313rem;
+        border-bottom-right-radius: 0.313rem;
+        outline: none;
+        color: #333;
+    }
+
+        .form-right .input-field:focus {
+            border: 0.063rem solid #708090;
+        }
+
+    .form-right .login-text {
+        padding: 1.25rem;
+        text-align: center;
+    }
+
+        .form-right label {
+            font-weight: 600;
+            font-size: 0.938rem;
+            color: #666;
+        }
+
+        .form-right a {
+            font-weight: 600;
+            font-size: 0.938rem;
+            color: #B0C4DE;
+            text-decoration: none;
+        }
+
+            .form-right a:hover {
+                color: #2F4F4F;
+            }
+
+    .form-right .submit-btn {
+        padding: 0.75rem;
+        background: #3786bd;
+        border-top-left-radius: 0.313rem;
+        border-bottom-right-radius: 0.313rem;
+        width: 8.125rem;
+        border: none;
+        margin: 0.375rem 0 3.125rem 0rem;
+        cursor: pointer;
+        color: #fff;
+        font-weight: 700;
+        font-size: 0.938rem;
+        display: block;
+        margin-right: auto;
+        margin-left: auto;
+        margin-top: 2%;
+    }
+
+        .form-right .submit-btn:hover {
+            background-color: #3785bde0;
+        }

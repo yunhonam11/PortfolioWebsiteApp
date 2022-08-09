@@ -1,0 +1,14 @@
+﻿@model ValidationViewModel
+
+<link rel="stylesheet" href="~/css/validationfirst.css" asp-append-version="true">
+
+<body>
+    <div class="wrapper card">
+        <form asp-controller="Account" asp-action="ValidationFirst" method="post">
+            <input asp-for="EmailAddress" type="hidden" value="@Model.EmailAddress">
+            <h3>Email Validation</h3>
+            <p>Please click on the button below so we can send you a validation email with a one-time passcode.</p>
+            <input type="submit" class="btn btn-dark send-btn" value="Send">
+        </form>
+    </div>
+</body>

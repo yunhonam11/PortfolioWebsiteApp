@@ -1,0 +1,251 @@
+body {
+    background: #757F9A; /* fallback for old browsers */
+    background: -webkit-linear-gradient(to left, #D7DDE8, #757F9A); /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to left, #D7DDE8, #757F9A); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+.name {
+    margin-top: 9%;
+    font-family: fantasy;
+}
+
+.master-div {
+    margin-top: -1%;
+    margin-bottom: 2.5%;
+    display: block;
+    height: 45rem;
+    width: 85rem;
+}
+
+/* left-card */
+
+.left-card {
+    float: left;
+    margin-top: 3.5%;
+}
+    
+    /* pic-card */
+
+    .left-card .pic-card {
+        height: 20rem;
+        width: 25rem;
+        border: 0.031rem solid #D3D3D3;
+        border-radius: 0.625rem;
+        box-shadow: 0 0.5rem 1.25rem 0rem #1f1f1f1a;
+        background: white;
+        overflow: hidden;
+    }
+
+        .left-card .pic-card .profile-pic-input {
+            width: 100rem;
+            height: 100rem;
+            opacity: 0;
+        }
+
+            .left-card .pic-card .profile-pic-input:hover {
+                cursor: pointer;
+            }
+
+        .left-card .pic-card #profile-pic-background {
+            width: 100%;
+            height: 100%;
+        }
+
+        .left-card .pic-card .profile-pic-btn {
+            position: absolute;
+            font-size: 2rem;
+            margin-left: 22.5%;
+            margin-top: 17.5%;
+        }
+
+    /* album-card */
+
+    .left-card .album-card {
+        margin-top: 6%;
+        height: 20rem;
+        width: 25rem;
+        border: 0.031rem solid #D3D3D3;
+        border-radius: 0.625rem;
+        box-shadow: 0 0.5rem 1.25rem 0rem #1f1f1f1a;
+        background: white;
+    }
+
+/* right-card */
+
+.right-card {
+    float: right;
+    display: inline-block;
+    margin-top: 3.5%;
+    margin-right: 5%;
+    margin-bottom: 3.5%;
+}
+
+    /* info-card */
+
+    .right-card .info-card {
+        height: 12.5rem;
+        width: 53.125rem;
+        border: 0.031rem solid #D3D3D3;
+        border-radius: 0.625rem;
+        box-shadow: 0 0.5rem 1.25rem 0rem #1f1f1f1a;
+        background: white;
+        overflow-y: auto;
+        overflow-x: hidden;
+    }
+        .right-card .info-card ul {
+            list-style: none;
+            margin-top: 2%;
+        }
+
+        .right-card .info-card li {
+            margin-top: 1%;
+        }
+
+        .right-card .info-card .colored {
+            color: #708090;
+        }
+
+        .right-card .info-card .empty-info {
+            color: #4169E1;
+        }
+
+            .right-card .info-card .empty-info:hover {
+                cursor: pointer;
+                text-decoration: underline;
+            }
+
+        .right-card .info-card .edit-btn:hover {
+            cursor: pointer;
+            color: #1E90FF;
+        }
+
+        /* top-menu */
+        .right-card .info-card .top-menu {
+            margin-top: 1.5%;
+            margin-left: 4%;
+        }
+
+        .right-card .info-card .top-menu span {
+            color: #4682B4;
+        }
+
+        .right-card .info-card .top-menu #menu-1 {
+            font-weight: bold;
+        }
+
+        .right-card .info-card .top-menu #menu-2:hover {
+            cursor: pointer;
+            text-decoration: underline;
+        }
+
+        .right-card .info-card .top-menu #menu-3:hover {
+            cursor: pointer;
+            text-decoration: underline;
+        }
+
+        .right-card .info-card .top-menu #menu-4 {
+            font-weight: bold;
+        }
+
+        /* About section */
+        .right-card .info-card #about-id1 {
+            display: block;
+            margin-top: 5%;
+            text-align: center;
+        }
+
+        .right-card .info-card textarea {
+            resize: none;
+            margin-top: 2%;
+            margin-left: 2.5%;
+            width: 40rem;
+            height: 7.5rem;
+        }
+
+        .right-card .info-card #about-length {
+            display: block;
+            margin-top: 3.5%;
+            margin-left: 79.1%;
+            font-size: 0.75rem;
+        }
+
+        .right-card .info-card #about-empty-nonuser {
+            text-align: center;
+            margin-top: 6%;
+            color: gray;
+        }
+
+        .right-card .info-card #about-edit-btn {
+            margin-left: 88%;
+        }
+
+        .right-card .info-card .p-control {
+            margin-bottom: 4%;
+            margin-left: 9%;
+            width: 42.5rem;
+            min-height: 0rem;
+        }
+
+        .right-card .info-card .editor-btn-group {
+            margin-top: -12%;
+            margin-left: 79%;
+        }
+
+        .right-card .info-card .about-editor-btn {
+            margin-top: 7.5%;
+            width: 5rem;
+        }
+
+        /* Phone section */
+        .right-card .info-card .phone-editor-btn {
+            margin-top: -0.5%;
+            margin-left: 1.5%;
+            height: 2.5rem;
+            width: 5rem;
+            padding-bottom: 0.5rem;
+        }
+
+        /* Birthdate section */
+        .right-card .info-card .birth-editor-btn {
+            margin-top: -0.5%;
+            margin-left: 1.5%;
+            height: 2.5rem;
+            width: 5rem;
+            padding-bottom: 0.5rem;
+        }
+
+        /* Address section */
+        .right-card .info-card .forms {
+            margin-top: 2%;
+        }
+
+        .right-card .info-card .forms .input-field {
+            width: 11rem;
+        }
+
+        .right-card .info-card .address-editor-btn {
+            margin-bottom: 2%;
+            width: 5rem;
+        }
+
+    .right-card .post-card {
+        margin-top: 3%;
+        height: 10rem;
+        width: 53.125rem;
+        border: 0.031rem solid #D3D3D3;
+        border-radius: 0.625rem;
+        box-shadow: 0 0.5rem 1.25rem 0rem #1f1f1f1a;
+        background: white;
+    }
+
+    /* activity-card */
+    .right-card .activity-card {
+        margin-top: 3%;
+        margin-bottom: 7.5%;
+        height: 24.5rem;
+        width: 53.125rem;
+        border: 0.031rem solid #D3D3D3;
+        border-radius: 0.625rem;
+        box-shadow: 0 0.5rem 1.25rem 0rem #1f1f1f1a;
+        background: white;
+    }

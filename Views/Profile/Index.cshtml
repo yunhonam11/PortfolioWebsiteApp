@@ -1,0 +1,299 @@
+﻿@inject SignInManager<AppUser> SignInManager
+
+@model ProfileViewModel
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+
+<link rel="stylesheet" href="~/css/profile.css" asp-append-version="true">
+<script src="~/js/profile.js" asp-append-version="true"></script>
+<script src="~/js/countries.js" asp-append-version="true"></script>
+
+<body onload="countriesParser()">
+    <h1 class="name">@Model.Name</h1>
+
+    <div class="master-div">
+        <div class="wrapper left-card">
+            <div class="pic-card">
+                @if (Model.ProfilePicture == null)
+                {
+                    @if (Model.Username == User.Identity.Name)
+                    {
+                        <div id="profile-pic-background" style="background: url('https://www.finearts.cmu.ac.th/wp-content/uploads/2021/07/blank-profile-picture-973460_1280-1.png') no-repeat; background-size: cover;">
+                            <form id="profile-pic-form" enctype="multipart/form-data">
+                                <span>
+                                    <i class="profile-pic-btn bi bi-pencil-square"></i>
+                                    <input asp-for="ProfilePictureForm" type="file" onchange="profilePicSaver('@Model.Username')" class="profile-pic-input" accept="image/*">
+                                </span>
+                            </form>
+                        </div>
+                    } else
+                    {
+                        <div id="profile-pic-background" style="background: url('https://www.finearts.cmu.ac.th/wp-content/uploads/2021/07/blank-profile-picture-973460_1280-1.png') no-repeat; background-size: cover;"></div>
+                    }
+                } else
+                {
+                    @if (Model.Username == User.Identity.Name)
+                    {
+                        <div id="profile-pic-background" style="background: url('@Model.ProfilePicture') no-repeat; background-size: cover;">
+                            <form id="profile-pic-form" enctype="multipart/form-data">
+                                <span>
+                                    <i class="profile-pic-btn bi bi-pencil-square"></i>
+                                    <input asp-for="ProfilePictureForm" type="file" onchange="profilePicSaver('@Model.Username')" class="profile-pic-input" accept="image/*">
+                                </span>
+                            </form>
+                        </div>
+                    } else
+                    {
+                        <div id="profile-pic-background" style="background: url('@Model.ProfilePicture') no-repeat; background-size: cover;"></div>
+                    }
+                }
+            </div>
+            <div class="album-card">
+
+            </div>
+        </div>
+        <div class="wrapper right-card">
+            <div class="info-card" id="info-card">
+                <div class="top-menu">
+                    <span id="menu-1">About</span>
+                    <span id="menu-2" class="ms-3" onclick="changeMenu('1')">Contact info</span>
+                    <span id="menu-3" hidden="hidden" onclick="changeMenu('2')">About</span>
+                    <span id="menu-4" class="ms-3" hidden="hidden">Contact info</span>
+                </div>
+
+                <div id="about">
+                    @if (Model.ProfileDescription == null)
+                    {
+                        if (Model.Username == User.Identity.Name)
+                        {
+                            <form novalidate id="about-null-form">
+                                <span class="empty-info" id="about-id1">
+                                    <i class="bi bi-plus-circle"></i> <span onclick="aboutNullEditor1()"> Introduce yourself!</span>
+                                </span>
+                                <div id="about-id2" hidden="hidden">
+                                    <textarea asp-for="ProfileDescription" onkeyup="countTextarea()" class="about-textarea" id="about-textarea"></textarea>
+                                    <div class="editor-btn-group">
+                                        <input class="about-editor-btn btn btn-primary" onclick="aboutSaver('@Model.Username', 'null')" value="Save">
+                                        <input class="about-editor-btn btn btn-danger" onclick="aboutNullEditor2()" value="Cancel">
+                                    </div>
+                                    <span id="about-length"></span>
+                                </div>
+                            </form>
+                        } else
+                        {
+                            <p id="about-empty-nonuser">Nothing to see here! <i class="bi bi-emoji-frown"></i></p>
+                        }
+                    } else
+                    {
+                        if (Model.Username == User.Identity.Name)
+                        {
+                            <form novalidate id="about-form">
+                                <div id="about-id3">
+                                    <span class="edit-btn" id="about-edit-btn" onclick="aboutEditor1()"><i class="bi bi-pencil-square"></i></span>
+                                    <div class="p-control">
+                                        <p class="about-display">@Model.ProfileDescription</p>
+                                    </div>
+                                </div>
+                                <div id="about-id4" hidden="hidden">
+                                    <textarea asp-for="ProfileDescription" onkeyup="countTextarea()" class="about-textarea" id="about-textarea"></textarea>
+                                    <div class="editor-btn-group">
+                                        <input class="about-editor-btn btn btn-primary" onclick="aboutSaver('@Model.Username', 'not null')" value="Save">
+                                        <input class="about-editor-btn btn btn-danger" onclick="aboutEditor2()" value="Cancel">
+                                    </div>
+                                    <span id="about-length"></span>
+                                </div>
+                            </form>
+                        } else
+                        {
+                            <div class="p-control">
+                                <p class="about-display" style="margin-top: 3.5%">@Model.ProfileDescription</p>
+                            </div>
+                        }
+                    }
+                </div>
+
+                <ul id="contact-info" hidden="hidden">
+                    @if (@Model.PhoneNumber == null)
+                    {
+                        @if (Model.Username == User.Identity.Name)
+                        {
+                            <form novalidate id="phone-null-form">
+                                <li class="empty-info" id="phone-id1">
+                                    <i class="bi bi-plus-circle"></i> <span onclick="phoneNullEditor1()">Add your phone number</span>
+                                </li>
+                                <li id="phone-id2" hidden="hidden">
+                                    <input asp-for="PhoneNumber" type="tel" maxlength="12" placeholder="xxx-xxx-xxxx">
+                                    <input class="phone-editor-btn btn btn-primary" onclick="phoneSaver('@Model.Username', 'null')" value="Save">
+                                    <input class="phone-editor-btn btn btn-danger" onclick="phoneNullEditor2()" value="Cancel">
+                                </li>
+                            </form>
+                        } else
+                        {
+                            <li>
+                                <i class="colored bi bi-telephone-fill"></i> <span class="colored ms-2">No phone number to show</span>
+                            </li>
+                        }
+                    } else
+                    {
+                        @if (Model.Username == User.Identity.Name)
+                        {
+                            <form novalidate id="phone-form">
+                                <li id="phone-id3">
+                                    <i class="colored bi bi-telephone-fill"></i> <span class="colored ms-2">Phone number: @Model.PhoneNumber</span>
+                                    <span class="edit-btn ms-5" onclick="phoneEditor1()"><i class="bi bi-pencil-square"></i></span>
+                                </li>
+                                <li id="phone-id4" hidden="hidden">
+                                    <input asp-for="PhoneNumber" type="tel" maxlength="12" placeholder="xxx-xxx-xxxx">
+                                    <input class="phone-editor-btn btn btn-primary" onclick="phoneSaver('@Model.Username', 'not null')" value="Save">
+                                    <input class="phone-editor-btn btn btn-warning" onclick="phoneDeleter('@Model.Username')" value="Delete">
+                                    <input class="phone-editor-btn btn btn-danger" onclick="phoneEditor2()" value="Cancel">
+                                </li>
+                            </form>
+                        } else
+                        {
+                            <li> 
+                                <i class="colored bi bi-telephone-fill"></i> <span class="colored ms-2">Phone number: @Model.PhoneNumber</span>
+                            </li>
+                        }
+                    }
+                    
+                    @if (@Model.BirthDate == null)
+                    {
+                        @if (Model.Username == User.Identity.Name)
+                        {
+                            <form novalidate id="birth-null-form">
+                                <li class="empty-info" id="birth-id1">
+                                    <i class="bi bi-plus-circle"></i> <span onclick="birthNullEditor1()"> Add your birthday </span>
+                                </li>
+                                <li id="birth-id2" hidden="hidden">
+                                    <input asp-for="BirthDate" type="date" min="1940-01-01" max="2008-01-01">
+                                    <input class="birth-editor-btn btn btn-primary" onclick="birthSaver('@Model.Username', 'null')" value="Save">
+                                    <input class="birth-editor-btn btn btn-danger" onclick="birthNullEditor2()" value="Cancel">
+                                </li>
+                            </form>
+                        } else
+                        {
+                            <li>
+                                <i class="colored bi bi-calendar-event"></i> <span class="colored ms-2">No birthday to show</span>
+                            </li>
+                        }
+
+                    } else
+                    {
+                        @if (Model.Username == User.Identity.Name)
+                        {
+                            <form novalidate id="birth-form">
+                                <li id="birth-id3">
+                                    <i class="colored bi bi-calendar-event"></i> <span class="colored ms-2">Birthday: @Model.BirthDate</span>
+                                    <span class="edit-btn ms-5" onclick="birthEditor1()"><i class="bi bi-pencil-square"></i></span>
+                                </li>
+                                <li id="birth-id4" hidden="hidden">
+                                    <input asp-for="BirthDate" type="date" min="1940-01-01" max="2008-01-01">
+                                    <input class="birth-editor-btn btn btn-primary" onclick="birthSaver('@Model.Username', 'not null')" value="Save">
+                                    <input class="birth-editor-btn btn btn-warning" onclick="birthDeleter('@Model.Username')" value="Delete">
+                                    <input class="birth-editor-btn btn btn-danger" onclick="birthEditor2()" value="Cancel">
+                                </li>
+                            </form>
+                        } else
+                        {
+                            <li>
+                                <i class="colored bi bi-calendar-event"></i> <span class="colored ms-2">Birthday: @Model.BirthDate</span>
+                            </li>
+                        }
+                    }
+
+                    @if (@Model.Address == null)
+                    {
+                        @if (Model.Username == User.Identity.Name)
+                        {
+                            <form novalidate id="address-null-form">
+                                <li class="empty-info" id="address-id1">
+                                    <i class="bi bi-plus-circle"></i> <span onclick="addressNullEditor1()">Add your address</span>
+                                </li>
+                                <li class="forms" id="address-id2" hidden="hidden">
+                                    <input asp-for="Street" type="text" maxlength="30" placeholder="Street Address">
+                                    <input asp-for="ZipOrPostal" type="text" maxlength="6" placeholder="Zip or Postal Code"> 
+                                    <br>
+                                    <input asp-for="City" type="text" maxlength="10" placeholder="City">
+                                    <input asp-for="StateOrProvince" type="text" maxlength="10" placeholder="State or Province">
+                                    <select asp-for="Country" id="countries-dropdown" name="country"></select>
+                                    <input class="address-editor-btn btn btn-primary ms-5" onclick="addressSaver('@Model.Username', 'null')" value="Save">
+                                    <input class="address-editor-btn btn btn-danger" onclick="addressNullEditor2()" value="Cancel">
+                                </li>
+                            </form>
+                        } else
+                        {
+                            <li>
+                                <i class="colored bi bi-house-door-fill"></i> <span class="colored ms-2">No birthday to show</span>
+                            </li>
+                        }
+                    } else
+                    {
+                        @if (Model.Username == User.Identity.Name)
+                        {
+                            <li>
+                                <form novalidate id="address-form">
+                                    <div id="address-id3">
+                                        <i class="colored bi bi-house-door-fill"></i>
+                                        <span class="colored ms-2">
+                                            Address: 
+                                        </span>
+                                        <span class="colored" style="margin-left: 5%;">
+                                            <span><b>Street</b>: @Model.Address.Street</span> <span class="ms-3"><b>Zip/Postal</b>: @Model.Address.ZipOrPostal </span>
+                                        </span>
+                                        <span class="edit-btn" style="margin-left: 12.5%" onclick="addressEditor1()"><i class="bi bi-pencil-square"></i></span>
+                                        <br>
+                                        <span class="colored" style="margin-left: 16.25%;">
+                                            <span><b>City</b>: @Model.Address.City</span> <span class="ms-3"><b>State/Province</b>: @Model.Address.StateOrProvince</span> <span class="ms-3"><b>Country</b>: @Model.Address.Country</span>
+                                        </span>
+
+                                    </div>
+                                    <div id="address-id4" hidden="hidden">
+                                        <input asp-for="Street" type="text" maxlength="30" value="@Model.Address.Street" placeholder="Street Address">
+                                        <input asp-for="ZipOrPostal" type="text" maxlength="6" value="@Model.Address.ZipOrPostal" placeholder="Zip or Postal Code"> 
+                                        <input class="address-editor-btn btn btn-primary" style="margin-left: 15%;" onclick="addressSaver('@Model.Username', 'not null')" value="Save">
+                                        <input class="address-editor-btn btn btn-warning" onclick="addressDeleter('@Model.Username')" value="Delete">
+                                        <input class="address-editor-btn btn btn-danger" onclick="addressEditor2()" value="Cancel">
+                                        <br>
+                                        <input asp-for="City" type="text" maxlength="10" value="@Model.Address.City" placeholder="City">
+                                        <input asp-for="StateOrProvince" type="text" maxlength="10" value="@Model.Address.StateOrProvince" placeholder="State or Province">
+                                        <select asp-for="Country" id="countries-dropdown" name="country"></select>
+                                    </div>
+                                </form>
+                            </li>
+                        } else
+                        {
+                            <li>
+                                <i class="colored bi bi-house-door-fill"></i>
+                                <span class="colored ms-2">
+                                    Address: 
+                                </span>
+                                <span class="colored ms-2">
+                                    <span style="margin-left: 5%;">
+                                        <span><b>Street</b>: @Model.Address.Street</span> <span class="ms-3"><b>Zip/Postal</b>: @Model.Address.ZipOrPostal </span>
+                                    </span>
+                                    <br>
+                                    <span style="margin-left: 17.25%;">
+                                        <span><b>City</b>: @Model.Address.City</span> <span class="ms-3"><b>State/Province</b>: @Model.Address.StateOrProvince</span> <span class="ms-3"><b>Country</b>: @Model.Address.Country</span>
+                                    </span>
+                                </span>
+                            </li>
+                        }
+                    }
+                </ul>
+            </div>
+            
+            @if (Model.Username == User.Identity.Name)
+            {
+                <div class="post-card">
+
+                </div>
+            }
+
+            <div class="activity-card">
+
+            </div>
+        </div>
+    </div>
+
+</body>

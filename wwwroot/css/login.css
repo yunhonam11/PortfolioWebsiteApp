@@ -1,0 +1,99 @@
+body {
+    background: #757F9A; /* fallback for old browsers */
+    background: -webkit-linear-gradient(to left, #D7DDE8, #757F9A); /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to left, #D7DDE8, #757F9A); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+.error-msg ul {
+    list-style-type: none;
+}
+
+.master-div {
+    width: 46.875rem;
+    height: 30rem;
+    background: #303030;
+    margin: auto;
+    margin-top: 10.5%;
+    overflow: hidden;
+}
+
+    .master-div .heading {
+        font-family: fantasy;
+        color: white;
+        text-align: center;
+        margin-top: 9%;
+    }
+
+    .master-div .subheading {
+        color: #A9A9A9;
+        text-align: center;
+    }
+
+    .master-div .input-field {
+        display: block;
+        margin: auto;
+        padding: 0.625rem;
+        text-align: center;
+        width: 21.875rem;
+        border-radius: 1.563rem;
+        border: 0.125rem solid #4169E1;
+        background: #303030;
+        margin-top: 3%;
+    }
+
+        .master-div .input-field:focus {
+            background: #303030;
+            border: 0.125rem solid #FFF0F5;
+        }
+
+    .master-div .submit-div {
+        text-align: center;
+        margin-top: 4%;
+    }
+
+        .master-div .submit-div input {
+            width: 12.5rem;
+            padding: 0.5rem;
+            background: transparent;
+            border: 0.075rem solid #FFB6C1;
+            color: #FFB6C1;
+        }
+
+            .master-div .submit-div input:hover {
+                border: 0.075rem solid #FA8072;
+                color: #FA8072;
+            }
+
+    .master-div .links-div {
+        margin-top: 3%;
+        margin-left: 20%;
+    }
+
+        .master-div .links-div p {
+            color: #F5F5F5;
+        }
+
+        .master-div .links-div input {
+            position: absolute;
+            margin-left: 0.5%;
+            margin-top: 0.25%;
+            height: 1.125rem;
+            width: 1.125rem;
+            background-color: #fff;
+            border: 0.125rem solid #ddd;
+            border-radius: 0.125rem;
+        }
+
+            .master-div .links-div input:hover {
+                cursor: pointer;
+            }
+
+        .master-div .links-div a {
+            color: #F5F5F5;
+        }
+
+            .master-div .links-div a:hover {
+                cursor: pointer;
+                color: #483D8B;
+            }
+

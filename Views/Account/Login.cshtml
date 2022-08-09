@@ -1,0 +1,34 @@
+﻿@model LoginViewModel
+
+<link rel="stylesheet" href="~/css/login.css" asp-append-version="true">
+<script src="~/js/login.js" asp-append-version="true"></script>
+
+<body>
+    <div class="master-div">
+        <form asp-controller="Account" asp-action="Login" method="post" role="form">
+            <h1 class="heading">LOGIN</h1>
+            <p class="subheading">Please enter your login and password</p>
+            <div asp-validation-summary="All" class="error-msg text-danger text-center"></div>
+            <div class="email-div">
+                <input asp-for="EmailAddress" type="email" class="input-field" placeholder="Email Address" required>
+            </div>
+            <div class="password-div">
+                <input asp-for="Password" type="password" class="input-field" placeholder="Password" required>
+            </div>
+            <div class="submit-div">
+                <input type="submit" value="Submit" class="submit-btn">
+            </div>
+            <div class="row links-div">
+                <div class="col">
+                    <p>Remember Me
+                        <input asp-for="RememberMe" type="checkbox" name="rememberme" value="false" onclick="checkboxChanger();" id="rememberMe">
+                        <span class="checkmark"></span>
+                    </p>
+                </div>
+                <div class="col">
+                    <a>Forgot Password?</a>
+                </div>
+            </div>
+        </form>
+    </div>
+</body>

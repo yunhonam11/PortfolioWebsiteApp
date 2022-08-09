@@ -1,0 +1,51 @@
+html {
+    font-size: 0.875rem;
+}
+
+@media (min-width: 48rem) {
+    html {
+        font-size: 1rem;
+    }
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+    margin-bottom: 3.75rem;
+}
+
+.navbar {
+    background: #757F9A; /* fallback for old browsers */
+    background: -webkit-linear-gradient(to left, #D7DDE8, #757F9A); /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to left, #D7DDE8, #757F9A); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+    .navbar a:hover {
+        color: #FFEBCD;
+    }
+
+.logo {
+    margin-left: 7.5%;
+    margin-top: 0.5%;
+    color: #FFF0F5;
+}
+
+.main-menu {
+    margin-left: 20%;
+}
+    .main-menu a {
+        text-decoration: none;
+        color: #F5FFFA;
+        margin-left: 2.5rem;
+    }
+
+.account-menu {
+    margin-left: 20%;
+}
+    .account-menu a {
+        text-decoration: none;
+        color: #708090;
+        margin-left: 2.5rem;
+    }

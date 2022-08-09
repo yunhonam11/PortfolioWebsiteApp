@@ -1,0 +1,35 @@
+﻿@model ValidationViewModel
+
+<link rel="stylesheet" href="~/css/validationsecond.css" asp-append-version="true">
+<script src="~/js/validationsecond.js" asp-append-version="true"></script>
+
+<body>
+    <div class="container card1">
+        <form asp-controller="Account" asp-action="ValidationSecond" method="post">
+            <input asp-for="EmailAddress" type="hidden" value="@Model.EmailAddress">
+            <input asp-for="Passcode" type="hidden" value="@Model.Passcode">
+            <input asp-for="Attempts" type="hidden" value="@Model.Attempts">
+            <h5>Please enter the one time password to verify your account</h5>
+            <p>A code has been sent to your Email. Please check spam folder.</p>
+            <div asp-validation-summary="All" class="error-msg text-danger text-center"></div>
+            <div class="otp d-flex flex-row justify-content-center mt-5" id="otp">
+                <input asp-for="Pass1" class="m-2 text-center form-control rounded" type="text" id="first" maxlength="1" size="1" required>
+                <input asp-for="Pass2" class="m-2 text-center form-control rounded" type="text" id="second" maxlength="1" size="1" required>
+                <input asp-for="Pass3" class="m-2 text-center form-control rounded" type="text" id="third" maxlength="1" size="1" required>
+                <input asp-for="Pass4" class="m-2 text-center form-control rounded" type="text" id="fourth" maxlength="1" size="1" required>
+                <input asp-for="Pass5" class="m-2 text-center form-control rounded" type="text" id="fifth" maxlength="1" size="1" required>
+                <input asp-for="Pass6" class="m-2 text-center form-control rounded" type="text" id="sixth" maxlength="1" size="1" required>
+            </div>
+            <input class="btn btn-primary px-4 validate-btn" type="submit" value="Validate">
+        </form>
+    </div>
+    <div class="wrapper card2">
+        <form asp-controller="Account" asp-action="ValidationFirst" method="get">
+            <div class="content d-flex justify-content-center align-items-center">
+                <input type="hidden" asp-for="EmailAddress" value="@Model.EmailAddress">
+                <p>Didn't get the code?</p>
+                <input class="resend" type="submit" value="Resend">
+            </div>
+        </form>
+    </div>
+</body>
