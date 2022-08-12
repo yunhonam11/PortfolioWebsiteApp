@@ -9,6 +9,7 @@ namespace PortfolioWebsiteApp.Models
         public string? Name { get; set; }
         public bool? IsEmailConfirmed { get; set; }
         public string? ProfilePicture { get; set; }
+        public string? ProfilePictureNav { get; set; }
         public string? ProfileDescription { get; set; }
         [DataType(DataType.PhoneNumber)]
         public override string? PhoneNumber { get; set; }

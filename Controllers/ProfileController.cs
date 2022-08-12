@@ -20,6 +20,7 @@ namespace PortfolioWebsiteApp.Controllers
             _addressRepository = addressRepository;
         }
 
+        // Action for displaying the specified user's profile page
         [HttpGet]
         [Route("Profile/Index/{username}")]
         public async Task<IActionResult> Index(string? username)
@@ -42,119 +43,156 @@ namespace PortfolioWebsiteApp.Controllers
             return View(profileVM);
         }
 
+        // Action for saving Profile Photo into the specified user's account
         [HttpPost]
         [Route("Profile/EditProfilePic/{username}")]
         public async Task<IActionResult> EditProfilePic(string? username, ProfileViewModel profileVM)
         {
-            AppUser appUser = await _userManager.FindByNameAsync(username);
-            var photoResult = await _photoService.AddPhotoAsync(profileVM.ProfilePictureForm);
+            if (username == User.Identity.Name)
+            {
+                AppUser appUser = await _userManager.FindByNameAsync(username);
+                var photoResult = await _photoService.AddPhotoAsync(profileVM.ProfilePictureForm, "profile", 320, 400);
+                // navbar version of profile picture to display in navbar
+                var photoResultNav = await _photoService.AddPhotoAsync(profileVM.ProfilePictureForm, "profile", 30, 30);
 
-            appUser.ProfilePicture = photoResult.Url.ToString();
-            await _userManager.UpdateAsync(appUser);
+                appUser.ProfilePicture = photoResult.Url.ToString();
+                appUser.ProfilePictureNav = photoResultNav.Url.ToString();
+                await _userManager.UpdateAsync(appUser);
+            }
 
             return RedirectToAction("Index", "Profile");
         }
 
+        // Action for saving About string into the specified user's account
         [HttpPost]
         [Route("Profile/EditAbout/{username}")]
         public async Task<IActionResult> EditAbout(string? username, ProfileViewModel profileVM)
         {
-            AppUser appUser = await _userManager.FindByNameAsync(username);
+            if (username == User.Identity.Name)
+            {
+                AppUser appUser = await _userManager.FindByNameAsync(username);
 
-            appUser.ProfileDescription = profileVM.ProfileDescription;
-            await _userManager.UpdateAsync(appUser);
+                appUser.ProfileDescription = profileVM.ProfileDescription;
+                await _userManager.UpdateAsync(appUser);
+            }
 
             return RedirectToAction("Index", "Profile");
         }
 
+        // Action for saving Phone number string into the specified user's account
         [HttpPost]
         [Route("Profile/EditPhone/{username}")]
         public async Task<IActionResult> EditPhone(string? username, ProfileViewModel profileVM)
         {
-            AppUser appUser = await _userManager.FindByNameAsync(username);
-            
-            appUser.PhoneNumber = profileVM.PhoneNumber;
-            await _userManager.UpdateAsync(appUser);
+            if (username == User.Identity.Name)
+            {
+                AppUser appUser = await _userManager.FindByNameAsync(username);
+
+                appUser.PhoneNumber = profileVM.PhoneNumber;
+                await _userManager.UpdateAsync(appUser);
+            }
 
             return RedirectToAction("Index", "Profile");
         }
 
+        // Action for deleting Phone number string from the specified user's account
         [HttpPost]
         [Route("Profile/DeletePhone/{username}")]
         public async Task<IActionResult> DeletePhone(string? username)
         {
-            AppUser appUser = await _userManager.FindByNameAsync(username);
+            if (username == User.Identity.Name)
+            {
+                AppUser appUser = await _userManager.FindByNameAsync(username);
 
-            appUser.PhoneNumber = null;
-            await _userManager.UpdateAsync(appUser);
+                appUser.PhoneNumber = null;
+                await _userManager.UpdateAsync(appUser);
+            }
 
             return RedirectToAction("Index", "Profile");
         }
 
+        // Action for saving BirthDate string into the specified user's account
         [HttpPost]
         [Route("Profile/EditBirth/{username}")]
         public async Task<IActionResult> EditBirth(string? username, ProfileViewModel profileVM)
         {
-            AppUser appUser = await _userManager.FindByNameAsync(username);
+            if (username == User.Identity.Name)
+            {
+                AppUser appUser = await _userManager.FindByNameAsync(username);
 
-            appUser.BirthDate = profileVM.BirthDate;
-            await _userManager.UpdateAsync(appUser);
+                appUser.BirthDate = profileVM.BirthDate;
+                await _userManager.UpdateAsync(appUser);
+            }
 
             return RedirectToAction("Index", "Profile");
         }
 
+        // Action for deleting BirthDate string from the specified user's account
         [HttpPost]
         [Route("Profile/DeleteBirth/{username}")]
         public async Task<IActionResult> DeleteBirth(string? username)
         {
-            AppUser appUser = await _userManager.FindByNameAsync(username);
+            if (username == User.Identity.Name)
+            {
+                AppUser appUser = await _userManager.FindByNameAsync(username);
 
-            appUser.BirthDate = null;
-            await _userManager.UpdateAsync(appUser);
+                appUser.BirthDate = null;
+                await _userManager.UpdateAsync(appUser);
+            }
 
             return RedirectToAction("Index", "Profile");
         }
 
+        // Action for saving Address model data into the specified user's account
         [HttpPost]
         [Route("Profile/EditAddress/{username}")]
         public async Task<IActionResult> EditAddress(string? username, ProfileViewModel profileVM)
         {
-            AppUser appUser = await _userManager.FindByNameAsync(username);
-            if (appUser.AddressID == null)
+            if (username == User.Identity.Name)
             {
-                appUser.Address = new Address
+                AppUser appUser = await _userManager.FindByNameAsync(username);
+                if (appUser.AddressID == null)
                 {
-                    Street = profileVM.Street,
-                    City = profileVM.City,
-                    StateOrProvince = profileVM.StateOrProvince,
-                    ZipOrPostal = profileVM.ZipOrPostal,
-                    Country = profileVM.Country,
-                };
-                await _userManager.UpdateAsync(appUser);
-            } else
+                    appUser.Address = new Address
+                    {
+                        Street = profileVM.Street,
+                        City = profileVM.City,
+                        StateOrProvince = profileVM.StateOrProvince,
+                        ZipOrPostal = profileVM.ZipOrPostal,
+                        Country = profileVM.Country,
+                    };
+                    await _userManager.UpdateAsync(appUser);
+                }
+                else
+                {
+                    Address address = _addressRepository.GetById(appUser.AddressID);
+                    address.Street = profileVM.Street;
+                    address.City = profileVM.City;
+                    address.StateOrProvince = profileVM.StateOrProvince;
+                    address.ZipOrPostal = profileVM.ZipOrPostal;
+                    address.Country = profileVM.Country;
+                    _addressRepository.Save();
+                }
+            }
+
+            return RedirectToAction("Index", "Profile");
+        }
+
+        // Action for deleting Address model data from the specified user's account
+        [HttpPost]
+        [Route("Profile/DeleteAddress/{username}")]
+        public async Task<IActionResult> DeleteAddress(string? username)
+        {
+            if (username == User.Identity.Name)
             {
-                Address address = _addressRepository.GetById(appUser.AddressID);
-                address.Street = profileVM.Street;
-                address.City = profileVM.City;
-                address.StateOrProvince = profileVM.StateOrProvince;
-                address.ZipOrPostal = profileVM.ZipOrPostal;
-                address.Country = profileVM.Country;
+                AppUser appUser = await _userManager.FindByNameAsync(username);
+
+                _addressRepository.RemoveById(appUser.AddressID);
                 _addressRepository.Save();
             }
 
             return RedirectToAction("Index", "Profile");
         }
 
-        [HttpPost]
-        [Route("Profile/DeleteAddress/{username}")]
-        public async Task<IActionResult> DeleteAddress(string? username)
-        {
-            AppUser appUser = await _userManager.FindByNameAsync(username);
-
-            _addressRepository.RemoveById(appUser.AddressID);
-            _addressRepository.Save();
-
-            return RedirectToAction("Index", "Profile");
-        }
     }
 }

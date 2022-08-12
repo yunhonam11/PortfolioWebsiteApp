@@ -1,14 +1,12 @@
 body {
-    background: #757F9A; /* fallback for old browsers */
-    background: -webkit-linear-gradient(to left, #D7DDE8, #757F9A); /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(to left, #D7DDE8, #757F9A); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background: #757F9A;
 }
 
 .alert {
     width: 28.125rem;
     left: 50%;
     margin-left: -14.063rem;
-    margin-top: 7.5%;
+    margin-top: -17%;
     padding: 1.25rem;
     background-color: #5291EF;
     color: white;
@@ -28,4 +26,102 @@ body {
 
     .closemsg:hover {
         color: black;
+    }
+
+.content-div {
+    margin-top: 25%;
+}
+
+    .content-div .input-field {
+        width: 20rem;
+        padding: 1rem;
+        border-radius: 1rem 1rem;
+        border: 0rem;
+    }
+
+    .content-div .save-btn {
+        margin-left: 1%;
+        width: 5rem;
+    }
+
+    .content-div .cancel-btn {
+        width: 5rem;
+    }
+
+    /* home picture */
+    .content-div .home-img-edit-btn {
+        position: absolute;
+        margin-top: -12.5%;
+        margin-left: 65%;
+        color: #404040;
+    }
+
+        .content-div .home-img-edit-btn:hover {
+            color: #400000;
+        }
+
+    .content-div .pic-input {
+        width: 1rem;
+        margin-left: -50%;
+        opacity: 0;
+    }
+
+    .content-div .home-picture {
+        position: absolute;
+        margin-top: -12.5%;
+        margin-left: 47.5%;
+        width: 16.25rem;
+        height: 20rem;
+    }
+
+    /* title text */
+    .content-div .title-edit-btn {
+        position: absolute;
+        margin-top: -2%;
+        margin-left: 0%;
+        color: #404040;
+    }
+
+        .content-div .title-edit-btn:hover {
+            cursor: pointer;
+            color: #400000;
+        }
+
+    .content-div h1 {
+        margin-top: 5%;
+    }
+
+    .content-div #title-edit-form {
+        margin-top: 5%;
+    }
+
+    /* body text */
+    .content-div .body-edit-btn {
+        position: absolute;
+        margin-top: -2%;
+        margin-left: 0%;
+        color: #404040;
+    }
+
+        .content-div .body-edit-btn:hover {
+            cursor: pointer;
+            color: #400000;
+        }
+
+    .content-div .home-body {
+        margin-top: 1%;
+        color: #383838;
+    }
+
+    .content-div .body-editor-form {
+        resize: none;
+        margin-top: 0%;
+        height: 10rem;
+        width: 50rem;
+    }
+
+    .content-div .body-btns {
+        display: block;
+        margin-top: -3.5%;
+        margin-left: 62.5%;
     }

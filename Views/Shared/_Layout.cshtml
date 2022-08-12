@@ -26,10 +26,10 @@
                             <a class="" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="" asp-area="" asp-controller="Home" asp-action="Index">Resume</a>
+                            <a class="" asp-area="" asp-controller="About" asp-action="Index">About</a>
                         </li>
                         <li class="nav-item">
-                            <a class="" asp-area="" asp-controller="Home" asp-action="Index">Contact</a>
+                            <a class="" asp-area="" asp-controller="Home" asp-action="Index">Portfolio</a>
                         </li>
                         <li class="nav-item">
                             <a class="" asp-area="" asp-controller="Home" asp-action="Index">Blogs</a>
@@ -38,13 +38,26 @@
                             <a class="" asp-area="" asp-controller="Home" asp-action="Index">Userbase</a>
                         </li>
                     </ul>
+
                     <ul class="navbar-nav flex-grow-1 account-menu">
                         @if (SignInManager.IsSignedIn(User))
                         {
-                            <li class="nav-item">
+                            AppUser appUser = await UserManager.FindByNameAsync(User.Identity.Name);
+                            if (appUser.ProfilePictureNav != null)
+                            { 
+                                <li class="nav-item">
+                                    <img width="30" height="30" style="border-radius: 50%" src="@appUser.ProfilePictureNav">
+                                </li>
+                            } else
+                            {
+                                <li class="nav-item">
+                                    <img width="30" height="30" style="border-radius: 50%" src="https://cdn-icons-png.flaticon.com/128/1946/1946429.png">
+                                </li>
+                            }
+                            <li class="nav-item ms-3">
                                 <a class="" asp-area="" asp-controller="Profile" asp-action="Index" asp-route-id="@User.Identity.Name">Profile</a>
                             </li>
-                            <li class="nav-item">
+                            <li class="nav-item ms-4">
                                 <a class="" asp-area="" asp-controller="Account" asp-action="Logout">Logout</a>
                             </li>
                         } else
@@ -52,7 +65,7 @@
                             <li class="nav-item">
                                 <a class="" asp-area="" asp-controller="Account" asp-action="Login">Login</a>
                             </li>
-                            <li class="nav-item">
+                            <li class="nav-item ms-4">
                                 <a class="" asp-area="" asp-controller="Account" asp-action="Register">Register</a>
                             </li>
                         }
@@ -68,9 +81,9 @@
         </main>
     </div>
 
-    <footer class="border-top footer text-muted bg-light fixed-bottom">
+    <footer class="border-top footer text-muted fixed-bottom">
         <div class="container">
-            &copy; 2022 - YunFolio - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+            &copy; 2022 - YunFolio - <a class="contact" asp-area="" asp-controller="Contact" asp-action="Index">Contact</a>
         </div>
     </footer>
 

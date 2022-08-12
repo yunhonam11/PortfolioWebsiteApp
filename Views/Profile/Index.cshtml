@@ -9,7 +9,13 @@
 <script src="~/js/countries.js" asp-append-version="true"></script>
 
 <body onload="countriesParser()">
-    <h1 class="name">@Model.Name</h1>
+    @if (SignInManager.IsSignedIn(User) && User.IsInRole("Admin"))
+    {
+        <h1 class="name">@Model.Name (Admin)</h1>
+    } else
+    {
+        <h1 class="name">@Model.Name</h1>
+    }
 
     <div class="master-div">
         <div class="wrapper left-card">
@@ -286,7 +292,7 @@
             @if (Model.Username == User.Identity.Name)
             {
                 <div class="post-card">
-
+                    
                 </div>
             }
 

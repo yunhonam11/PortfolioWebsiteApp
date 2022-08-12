@@ -30,6 +30,7 @@ namespace PortfolioWebsiteApp.Controllers
         {
             //var user = await _userManager.FindByNameAsync("namyun");
             //var result = _userManager.DeleteAsync(user);
+
             return View();
         }
 

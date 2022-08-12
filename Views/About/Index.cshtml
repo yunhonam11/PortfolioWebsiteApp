@@ -1,0 +1,28 @@
+﻿@inject SignInManager<AppUser> SignInManager
+@model AboutViewModel
+
+<link rel="stylesheet" href="~/css/about.css" asp-append-version="true">
+<script src="~/js/about.js" asp-append-version="true"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+
+<body>
+    <div id="title-load">
+        <form novalidate id="title-form">
+            <span id="about-title">
+                <i class="bi bi-pencil-square title-edit-btn" onclick="titleEditor1()"></i>
+                <h1 class="home-title" style="color:#F0F0F0">@Model.Title</h1>
+            </span>
+            <span id="edit-about-title" hidden="hidden">
+
+            </span>
+        </form>
+    </div>
+
+    <div id="body-load"> 
+
+    </div>
+
+    <div id="pics-load">
+
+    </div>
+</body>

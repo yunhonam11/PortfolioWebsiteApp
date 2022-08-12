@@ -1,5 +1,4 @@
 ﻿/* top menu */
-
 function changeMenu(mode) {
     if (mode == '1') {
         document.getElementById("menu-1").setAttribute("hidden", "hidden");
@@ -19,7 +18,6 @@ function changeMenu(mode) {
 }
 
 /* Profile Picture */
-
 function profilePicSaver(username) {
     var form = $('#profile-pic-form').closest("form");
     var formData = new FormData(form[0]);
@@ -34,7 +32,6 @@ function profilePicSaver(username) {
 }
 
 /* About Description */
-
 function countTextarea() {
     var len = document.getElementById("about-textarea").value.length;
     var finallen = 1000 - len;
@@ -94,7 +91,6 @@ function aboutSaver(username, state) {
 }
 
 /* Phone number */
-
 function phoneNullEditor1() {
     document.getElementById("phone-id1").setAttribute("hidden", "hidden");
     document.getElementById("phone-id2").removeAttribute("hidden");
@@ -152,7 +148,6 @@ function phoneDeleter(username) {
 }
 
 /* Birthdate */
-
 function birthNullEditor1() {
     document.getElementById("birth-id1").setAttribute("hidden", "hidden");
     document.getElementById("birth-id2").removeAttribute("hidden");
@@ -203,7 +198,6 @@ function birthDeleter(username) {
 }
 
 /* Address */
-
 function addressNullEditor1() {
     document.getElementById("address-id1").setAttribute("hidden", "hidden");
     document.getElementById("address-id2").removeAttribute("hidden");
