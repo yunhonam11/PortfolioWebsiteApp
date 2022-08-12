@@ -1,4 +1,5 @@
 ﻿@inject SignInManager<AppUser> SignInManager
+@inject UserManager<AppUser> UserManager
 
 @model ProfileViewModel
 
@@ -9,16 +10,13 @@
 <script src="~/js/countries.js" asp-append-version="true"></script>
 
 <body onload="countriesParser()">
-    @if (SignInManager.IsSignedIn(User) && User.IsInRole("Admin"))
-    {
-        <h1 class="name">@Model.Name (Admin)</h1>
-    } else
-    {
-        <h1 class="name">@Model.Name</h1>
-    }
+    
+    <h1 class="name">@Model.Name</h1>
 
     <div class="master-div">
+        @* Left Card *@
         <div class="wrapper left-card">
+            @* Profile Picture Card *@
             <div class="pic-card">
                 @if (Model.ProfilePicture == null)
                 {
@@ -54,11 +52,14 @@
                     }
                 }
             </div>
+            @* Album Card *@
             <div class="album-card">
 
             </div>
         </div>
+        @* Right Cards *@
         <div class="wrapper right-card">
+            @* Info Card *@
             <div class="info-card" id="info-card">
                 <div class="top-menu">
                     <span id="menu-1">About</span>
@@ -66,7 +67,7 @@
                     <span id="menu-3" hidden="hidden" onclick="changeMenu('2')">About</span>
                     <span id="menu-4" class="ms-3" hidden="hidden">Contact info</span>
                 </div>
-
+                @* About Section *@
                 <div id="about">
                     @if (Model.ProfileDescription == null)
                     {
@@ -117,8 +118,9 @@
                         }
                     }
                 </div>
-
+                @* Contact Card *@
                 <ul id="contact-info" hidden="hidden">
+                    @* Phone Number Section *@
                     @if (@Model.PhoneNumber == null)
                     {
                         @if (Model.Username == User.Identity.Name)
@@ -162,7 +164,7 @@
                             </li>
                         }
                     }
-                    
+                    @* BirthDate Section *@
                     @if (@Model.BirthDate == null)
                     {
                         @if (Model.Username == User.Identity.Name)
@@ -207,7 +209,7 @@
                             </li>
                         }
                     }
-
+                    @* Address Section *@
                     @if (@Model.Address == null)
                     {
                         @if (Model.Username == User.Identity.Name)
@@ -288,14 +290,14 @@
                     }
                 </ul>
             </div>
-            
+            @* User Posts Textbox Card *@
             @if (Model.Username == User.Identity.Name)
             {
                 <div class="post-card">
                     
                 </div>
             }
-
+            @* User Posts Card Section *@
             <div class="activity-card">
 
             </div>

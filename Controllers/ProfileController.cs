@@ -30,16 +30,24 @@ namespace PortfolioWebsiteApp.Controllers
             AppUser appUser = await _userManager.FindByNameAsync(username);
             Address address = _addressRepository.GetById(appUser.AddressID);
 
+            bool userIsAdmin = await _userManager.IsInRoleAsync(appUser, "Admin");
+            var name = appUser.Name;
+            if (userIsAdmin)
+            {
+                name += " (Admin)";
+            }
+
             ProfileViewModel profileVM = new ProfileViewModel
             {
                 Username = username,
-                Name = appUser.Name,
+                Name = name,
                 ProfilePicture = appUser.ProfilePicture,
                 PhoneNumber = appUser.PhoneNumber,
                 BirthDate = appUser.BirthDate,
                 Address = address,
                 ProfileDescription = appUser.ProfileDescription,
             };
+
             return View(profileVM);
         }
 

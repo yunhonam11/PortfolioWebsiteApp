@@ -1,5 +1,164 @@
-
-
 body {
     background: #757F9A;
+    overflow-x: hidden;
 }
+
+.content-div {
+    margin-top: 10%;
+}
+
+    .content-div .input-field {
+        width: 20rem;
+        padding: 1rem;
+        border: 0rem;
+    }
+
+    .content-div .save-btn {
+        width: 5rem;
+    }
+
+    .content-div .cancel-btn {
+        width: 5rem;
+    }
+
+    /* about title */
+    .content-div .title-edit-btn {
+        position: absolute;
+        margin-top: -2%;
+        margin-left: 50%;
+        color: #404040;
+    }
+
+        .content-div .title-edit-btn:hover {
+            cursor: pointer;
+            color: #400000;
+        }
+
+    .content-div h1 {
+        margin-top: -2.5%;
+        text-align: center;
+    }
+
+    .content-div #title-edit-form {
+        margin-top: -2.5%;
+        margin-left: 35%;
+    }
+
+    /* about body */
+    .content-div .body-edit-btn {
+        position: absolute;
+        margin-top: -2%;
+        margin-left: 75%;
+        color: #404040;
+    }
+
+        .content-div .body-edit-btn:hover {
+            cursor: pointer;
+            color: #400000;
+        }
+
+    .content-div #body-load {
+        position: absolute;
+        left: 0;
+        right: 0;
+        margin-left: auto;
+        margin-right: auto;
+        width: 100rem;
+    }
+
+    .content-div .about-body {
+        text-align: center;
+        margin-top: 1%;
+        margin-left: 12.5%;
+        margin-right: 17.5%;
+        color: #383838;
+    }
+
+    .content-div .body-editor-form {
+        resize: none;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 1%;
+        height: 10rem;
+        width: 50rem;
+    }
+
+    .content-div #body-length {
+        display: block;
+        margin-top: -2.5%;
+        margin-left: 65%;
+        width: 10rem;
+    }
+
+    .content-div .body-btns {
+        display: block;
+        margin-left: 45%;
+        margin-top: 1%;
+    }
+
+    /* about logos */
+    .content-div #pics-load {
+        position: absolute;
+        margin-top: 17%;
+        margin-left: -15%;
+        width: 100rem;
+    }
+
+    .content-div .logos-div {
+        position: absolute;
+        margin-top: -1%;
+        width: 100rem;
+        text-align: center;
+    }
+
+    .content-div .logo-img {
+        width: 10rem;
+        height: 7.5rem;
+        display: inline-block;
+    }
+
+    .content-div .add-logo-div {
+        position: absolute;
+        width: 5rem;
+        height: 5rem;
+        margin-top: 8.5%;
+        margin-left: auto;
+        margin-right: auto;
+        left: 0;
+        right: 0;
+    }
+
+    .content-div .add-logo-div .add-logo-icon {
+        display: block;
+        margin-top: -125%;
+        margin-left: -5%;
+        font-size: 4.75rem;
+        color: #DCDCDC;
+    }
+
+    .content-div .add-logo-div input {
+        position: relative;
+        z-index: 9999;
+        height: 100%;
+        width: 100%;
+        opacity: 0;
+    }
+
+    .content-div .add-logo-small {
+        position: absolute;
+        margin-left: auto;
+        margin-right: auto;
+        left: 0;
+        right: 0;
+        text-align: center;
+        margin-top: 14%;
+        font-size: 0.75rem;
+        color: #D3D3D3;
+    }
+
+    .content-div .wipe-btn {
+        margin-top: 10%;
+        margin-left: 60%;
+        width: 8rem;
+    }

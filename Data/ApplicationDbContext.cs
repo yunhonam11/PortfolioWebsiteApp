@@ -13,6 +13,7 @@ namespace PortfolioWebsiteApp.Data
 
         public DbSet<Home> Home { get; set; }
         public DbSet<About> About { get; set; }
+        public DbSet<Logo> Logos { get; set; }
         public DbSet<Address> Addresses { get; set; }
     }
 }

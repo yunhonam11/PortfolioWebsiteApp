@@ -11,9 +11,6 @@ function pictureSaver()
         processData: false,
         contentType: false,
     });
-
-    //alert("Edit was successful!")
-    //$("#picture-load").load(window.location.href + " #picture-load");
 }
 
 /* home title */
@@ -42,6 +39,19 @@ function titleSaver() {
 }
 
 /* home body */
+function countTextarea() {
+    var len = document.getElementById("body-edit-form").value.length;
+    var finallen = 500 - len;
+
+    if (finallen < 0) {
+        document.getElementById("body-length").style.color = "red";
+        document.getElementById("body-length").innerHTML = finallen * -1 + " characters over limit";
+    } else {
+        document.getElementById("body-length").style.color = "black";
+        document.getElementById("body-length").innerHTML = finallen + " characters left";
+    }
+}
+
 function bodyEditor1() {
     document.getElementById("home-body").setAttribute("hidden", "hidden");
     document.getElementById("edit-home-body").removeAttribute("hidden");
@@ -54,14 +64,19 @@ function bodyEditor2() {
 
 function bodySaver() {
     var data = $("#body-form").serialize();
+    var dataChecker = $('#body-form').serializeArray();
 
-    $.ajax({
-        type: 'POST',
-        url: '/Home/EditBody',
-        data: data,
-        async: true
-    });
+    if (dataChecker[0].value.length <= 500) {
+        $.ajax({
+            type: 'POST',
+            url: '/Home/EditBody',
+            data: data,
+            async: true
+        });
 
-    alert("Edit successful!");
-    $("#body-load").load(window.location.href + " #body-load")
+        alert("Edit successful!");
+        $("#body-load").load(window.location.href + " #body-load");
+    } else {
+        alert("Character count cannot exceed 500.");
+    }
 }

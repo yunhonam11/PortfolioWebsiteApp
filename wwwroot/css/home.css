@@ -35,7 +35,6 @@ body {
     .content-div .input-field {
         width: 20rem;
         padding: 1rem;
-        border-radius: 1rem 1rem;
         border: 0rem;
     }
 
@@ -52,7 +51,7 @@ body {
     .content-div .home-img-edit-btn {
         position: absolute;
         margin-top: -12.5%;
-        margin-left: 65%;
+        margin-left: 79%;
         color: #404040;
     }
 
@@ -69,7 +68,7 @@ body {
     .content-div .home-picture {
         position: absolute;
         margin-top: -12.5%;
-        margin-left: 47.5%;
+        margin-left: 60%;
         width: 16.25rem;
         height: 20rem;
     }
@@ -95,7 +94,7 @@ body {
         margin-top: 5%;
     }
 
-    /* body text */
+    /* home body */
     .content-div .body-edit-btn {
         position: absolute;
         margin-top: -2%;
@@ -111,6 +110,11 @@ body {
     .content-div .home-body {
         margin-top: 1%;
         color: #383838;
+    }
+
+    .content-div #body-length {
+        display: block;
+        margin-left: 47.5%;
     }
 
     .content-div .body-editor-form {

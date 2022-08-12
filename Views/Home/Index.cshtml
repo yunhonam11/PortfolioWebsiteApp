@@ -27,7 +27,6 @@
             {
                 <img class="home-picture" src="@Model.Picture">
             }
-
         </div>
         <br>
         <div id="title-load">
@@ -61,7 +60,8 @@
                         </p>
                     </span>
                     <span id="edit-home-body" hidden="hidden"> 
-                        <textarea asp-for="Body" id="body-edit-form" class="body-editor-form">Enter Page Body</textarea>
+                        <textarea asp-for="Body" onkeyup="countTextarea()" id="body-edit-form" class="body-editor-form">Enter Page Body</textarea>
+                        <span id="body-length"> </span>
                         <span class="body-btns"> 
                             <input class="btn btn-primary save-btn" value="Save" onclick="bodySaver()">
                             <input class="btn btn-danger cancel-btn" value="Cancel" onclick="bodyEditor2()">
