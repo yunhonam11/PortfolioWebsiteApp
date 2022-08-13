@@ -1,0 +1,44 @@
+body {
+    background: #757F9A; /* fallback for old browsers */
+    background: -webkit-linear-gradient(to left, #D7DDE8, #757F9A); /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to left, #D7DDE8, #757F9A); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+h3 {
+    color: #E6E6FA; 
+}
+
+.admin-title {
+    margin-top: 10%;
+}
+
+.users-title {
+    margin-top: 5%;
+}
+
+table {
+    margin-top: 1.5%;
+    margin-bottom: 7.5%;
+    margin-left: auto;
+    margin-right: auto;
+}
+    th {
+        color: #FAF0E6;
+    }
+
+    th, td {
+        padding: 1rem 10rem 0rem;
+        text-align: center;
+    }
+
+    td {
+        color: #303030;
+    }
+
+    .first-header {
+        margin-right: 10%;
+    }
+
+hr {
+    color: #2F4F4F;
+}

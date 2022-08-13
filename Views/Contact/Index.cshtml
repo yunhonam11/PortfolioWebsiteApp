@@ -1,4 +1,59 @@
-﻿
-<body>
+﻿@inject SignInManager<AppUser> SignInManager
+@model ContactViewModel
 
+<link rel="stylesheet" href="~/css/contact.css" asp-append-version="true">
+<script src="~/js/contact.js" asp-append-version="true"></script>
+<script src="~/js/countries.js" asp-append-version="true"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+
+<body onload="countriesParser()">
+    <div class="left-card" id="left-card"> 
+        <h1 class="heading">Let's Talk</h1>
+        <h7 class="subheading"> If you are interested in hiring me or if you have any other inquiries, just send me a message! </h7>
+
+        <ul class="text-titles" id="display-section">
+            @if (SignInManager.IsSignedIn(User) && User.IsInRole("Admin"))
+            {
+                <i class="bi bi-pencil-square edit-btn" onclick="enableEditor()"></i>
+            }
+            <li>
+                <p> <b>Address:</b> @Model.City, @Model.Region, @Model.Country </p>
+            </li>
+            <li>
+                <p> <b>Email:</b> @Model.EmailAddress </p>
+            </li>
+            <li>
+                <p> <b>Social:</b> </p>
+            </li>
+            <a href="https://www.linkedin.com/in/david-nam-298548220/" target="_blank">
+                <img alt="LinkedIn" class="logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/ca/LinkedIn_logo_initials.png/640px-LinkedIn_logo_initials.png">
+            </a>
+            <a href="https://github.com/yunhonam11" target="_blank">
+                <img alt="LinkedIn" class="logo" src="https://cdn-icons-png.flaticon.com/512/25/25231.png?w=360">
+            </a>
+        </ul>
+        <form novalidate id="info-form" hidden="hidden">
+            <input asp-for="City" type="text" class="input-field city" placeholder="City">
+            <input asp-for="Region" type="text" class="input-field region" placeholder="Province/State">
+            <select asp-for="Country" class="input-field" id="countries-dropdown" name="country"></select>
+            <br>
+            <input asp-for="EmailAddress" type="email" class="input-field email" placeholder="Email Address">
+            <br>
+            <span class="btn-group">
+                <input class="btn btn-primary submit-btn" onclick="infoSaver()" value="Save">
+                <input class="btn btn-danger cancel-btn" onclick="disableEditor()" value="Cancel">
+            </span>
+        </form>
+    </div>
+
+    <div class="emailer-card">
+        <h3 class="heading">Send me a message</h3>
+        <form novalidate id="emailer-form">
+            <input asp-for="EmailerName" type="text" class="input-field name" minlength="5" maxlength="20" placeholder="Full Name*" required>
+            <input asp-for="EmailerEmail" type="email" class="input-field email" minlength="5" maxlength="25" placeholder="Email Address*" required>
+            <input asp-for="EmailerTitle" type="text" class="input-field title" placeholder="Subject">
+            <textarea asp-for="EmailerBody" class="input-field body"></textarea>
+            <input class="btn btn-primary send-btn" onclick="sendEmail()" value="Send">
+        </form>
+    </div>
 </body>

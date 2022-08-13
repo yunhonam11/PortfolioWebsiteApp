@@ -1,5 +1,7 @@
 body {
-    background: #757F9A;
+    background: #757F9A; /* fallback for old browsers */
+    background: -webkit-linear-gradient(to left, #D7DDE8, #757F9A); /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to left, #D7DDE8, #757F9A); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
     overflow-x: hidden;
 }
 
@@ -118,21 +120,37 @@ body {
         display: inline-block;
     }
 
-    .content-div .add-logo-div {
+    .content-div .source-code {
         position: absolute;
-        width: 5rem;
-        height: 5rem;
         margin-top: 8.5%;
-        margin-left: auto;
-        margin-right: auto;
-        left: 0;
-        right: 0;
+        margin-left: 50%;
+        color: white;
+    }
+        .content-div .source-code .git-logo {
+            width: 5rem;
+            height: 5rem;
+            border-radius: 50%;
+        }
+
+    /* add logo */
+    .content-div .add-logo-master-div {
+        position: absolute;
+        width: 20rem;
+        height: 10rem;
+        margin-top: 7.5%;
+        margin-left: 80%;
+    }
+
+    .content-div .add-logo-div {
+        width: 4.75rem;
+        height: 4.75rem;
+        margin-top: 8.5%;
+        margin-left: 5%;
     }
 
     .content-div .add-logo-div .add-logo-icon {
         display: block;
-        margin-top: -125%;
-        margin-left: -5%;
+        margin-top: -130%;
         font-size: 4.75rem;
         color: #DCDCDC;
     }
@@ -146,19 +164,17 @@ body {
     }
 
     .content-div .add-logo-small {
-        position: absolute;
-        margin-left: auto;
-        margin-right: auto;
-        left: 0;
-        right: 0;
-        text-align: center;
-        margin-top: 14%;
+        display: block;
         font-size: 0.75rem;
         color: #D3D3D3;
+        margin-top: -5%;
+        margin-left: -7.5%;
     }
 
     .content-div .wipe-btn {
-        margin-top: 10%;
-        margin-left: 60%;
+        display: block;
+        float: right;
+        margin-top: -40%;
+        margin-right: 10%;
         width: 8rem;
     }

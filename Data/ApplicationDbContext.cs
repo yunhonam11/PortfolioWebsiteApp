@@ -11,6 +11,7 @@ namespace PortfolioWebsiteApp.Data
 
         }
 
+        public DbSet<Contact> Contact { get; set; }
         public DbSet<Home> Home { get; set; }
         public DbSet<About> About { get; set; }
         public DbSet<Logo> Logos { get; set; }

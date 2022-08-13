@@ -31,6 +31,12 @@ body {
         margin-top: 20%;
     }
 
+    .form-left .register-body {
+        margin-left: 10%;
+        margin-right: 10%;
+        margin-top: 15%;
+    }
+
 .form-right {
     float: right;
     width: 34.375rem;

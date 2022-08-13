@@ -1,0 +1,123 @@
+body {
+    background: url("https://img.freepik.com/free-vector/white-background-with-blue-tech-hexagon_1017-19366.jpg?w=2000");
+}
+
+/* left card */
+.left-card {
+    position: absolute;
+    margin-top: 0%;
+    width: 45rem;
+    height: 35rem;
+}
+
+    .left-card .heading {
+        margin-top: 15%;
+    }
+
+    .left-card .subheading {
+        display: block;
+        margin-top: 2.5%;
+        color: #708090;
+    }
+
+    /* editors */
+    .left-card .btn-group {
+        display: block;
+        margin-top: 4%;
+        margin-left: 26%;
+    }
+
+    .left-card .btn {
+        width: 5rem;
+    }
+
+    .left-card #info-form {
+        margin-top: 10%;
+        margin-left: 10%;
+    }
+
+    .left-card .email {
+        margin-top: 5%;
+        margin-left: 25%;
+    }
+
+    /* social links */
+    .left-card .logo {
+        margin-top: 1%;
+        width: 5rem;
+        height: 5rem;
+        border-radius: 50%;
+    }
+
+    /* body */
+    .left-card .text-titles {
+        margin-top: 5%;
+        margin-left: -4%;
+        list-style: none;
+        color: #696969;
+    }
+
+    .left-card .edit-btn {
+        color: #4682B4;
+        position: absolute;
+        margin-top: -2.5%;
+        margin-left: 87.5%;
+    }
+
+        .left-card .edit-btn:hover {
+            cursor: pointer;
+            color: red;
+        }
+
+
+/* email card */
+.emailer-card {
+    width: 35rem;
+    min-height: 32.5rem;
+    margin-top: 7.5%;
+    margin-bottom: 1.5%;
+    margin-left: 57.5%;
+    border-radius: 1rem;
+    box-shadow: 0 0.5rem 1.25rem 0.5rem #1f1f1f1a;
+    background: white;
+    padding: 1.5rem;
+}
+
+    .emailer-card #emailer-form {
+        margin-top: 7.5%;
+    }
+
+    .emailer-card .heading {
+        margin-top: 5%;
+        text-align: center;
+    }
+
+    .emailer-card .input-field {
+        padding: 0.75rem;
+        background: #AFEEEE;
+        border: none;
+        border-radius: 1rem;
+        display: block;
+        margin-top: 5%;
+        margin-left: auto;
+        margin-right: auto;
+        left: 0;
+        right: 0;
+        width: 25rem;
+    }
+
+    .emailer-card .body {
+        height: 10rem;
+    }
+
+    .emailer-card .send-btn {
+        display: block;
+        margin-top: 5%;
+        margin-bottom: 2.5%;
+        margin-left: auto;
+        margin-right: auto;
+        left: 0;
+        right: 0;
+        width: 5rem;
+    }
+

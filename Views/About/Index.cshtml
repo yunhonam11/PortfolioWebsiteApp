@@ -56,16 +56,24 @@
                         </div>
                     }
                 </div>
+                <span class="source-code">
+                    <a href="https://github.com/yunhonam11/PortfolioWebsiteApp" target="_blank">
+                        <img class="git-logo" src="https://pngimg.com/uploads/github/github_PNG80.png">
+                    </a>
+                    <br>
+                    Source code
+                </span>
                 @if (SignInManager.IsSignedIn(User) && User.IsInRole("Admin"))
                 {
-                    <div class="add-logo-div">
-                        <input asp-for="LogoFile" class="add-logo-input" type="file" onchange="logoSaver()" accept="image/*">
-                        <i class="bi bi-file-earmark-image add-logo-icon"></i>  
+                    <div class="add-logo-master-div">
+                        <div class="add-logo-div">
+                            <input asp-for="LogoFile" class="add-logo-input" type="file" onchange="logoSaver()" accept="image/*">
+                            <i class="bi bi-file-earmark-image add-logo-icon"></i>  
+                        </div>
+                        <br>
+                        <p class="add-logo-small"> click the icon above to add logos!</p>
+                        <input class="btn btn-danger wipe-btn" value="Wipe Logos" onclick="logoWiper()">
                     </div>
-                    <br>
-                    <p class="add-logo-small"> click the icon above to add logos!</p>
-                    <br>
-                    <input class="btn btn-danger wipe-btn" value="Wipe Logos" onclick="logoWiper()">
                 }
             </form>
         </div>

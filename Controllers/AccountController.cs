@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using PortfolioWebsiteApp.Models;
 using PortfolioWebsiteApp.Models.ViewModels;
+using PortfolioWebsiteApp.Repositories.Interfaces;
 using System.Net;
 using System.Net.Mail;
 
@@ -28,7 +29,7 @@ namespace PortfolioWebsiteApp.Controllers
         [HttpGet]
         public async Task<IActionResult> Register()
         {
-            //var user = await _userManager.FindByNameAsync("namyun");
+            //var user = await _userManager.FindByNameAsync("tester1");
             //var result = _userManager.DeleteAsync(user);
 
             return View();
@@ -150,6 +151,7 @@ namespace PortfolioWebsiteApp.Controllers
             {
                 AppUser appUser = await _userManager.FindByEmailAsync(email);
                 appUser.IsEmailConfirmed = true;
+                await _userManager.AddToRoleAsync(appUser, "User");
                 await _signInManager.SignInAsync(appUser, isPersistent: false);
                 await _userManager.UpdateAsync(appUser);
                 TempData["Home"] = "You have successfully confirmed your account.";

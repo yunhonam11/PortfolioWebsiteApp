@@ -1,0 +1,45 @@
+﻿@model UsersViewModel
+
+<link rel="stylesheet" href="~/css/users.css" asp-append-version="true">
+
+<body>
+    <h3 class="admin-title">Admin Accounts</h3>
+    <table class="admin-table">
+        <tr>
+            <th class="first-header">Username</th>
+            <th class="second-header">Full Name</th>
+            <th class="third-header">Profile Link</th>
+        </tr>
+        @for (int i = 0; i < @Model.adminUsernames.Count(); i++)
+        {
+            <tr>
+                <td>@Model.adminUsernames.ElementAt(i)</td>
+                <td>@Model.adminNames.ElementAt(i)</td>
+                <td>
+                    <a class="" asp-area="" asp-controller="Profile" asp-action="Index" asp-route-id="@Model.adminUsernames.ElementAt(i)">click me!</a>
+                </td>
+            </tr>
+        }
+    </table>
+
+    <hr>
+
+    <h3 class="users-title">Regular User Accounts</h3>
+    <table class="users-table">
+        <tr>
+            <th class="first-header">Username</th>
+            <th class="second-header">Full Name</th>
+            <th class="third-header">Profile Link</th>
+        </tr>
+        @for (int i = 0; i < @Model.userNames.Count(); i++)
+        {
+            <tr>
+                <td>@Model.userUsernames.ElementAt(i)</td>
+                <td>@Model.userNames.ElementAt(i)</td>
+                <td>
+                    <a class="" asp-area="" asp-controller="Profile" asp-action="Index" asp-route-id="@Model.userUsernames.ElementAt(i)">click me!</a>
+                </td>
+            </tr>
+        }
+    </table>
+</body>

@@ -1,12 +1,24 @@
-﻿@model RegisterViewModel
+﻿@inject SignInManager<AppUser> SignInManager
+@model RegisterViewModel
 
 <link rel="stylesheet" href="~/css/register.css" asp-append-version="true">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
 
 <body>
     <div class="wrapper">
         <div class="form-left">
-            <h2 class="text-center">Registration Notice</h2>
+            <h2 class="register-title text-center">
+                Registration Notice
+            </h2>
+            <p class="register-body text-center" style="color:#DCDCDC">
+                Please note that this site uses SMTP to send confirmation emails. 
+                So you must check your email's spam folder to find your confirmation email.
+                Since this is a portfolio website, it is strongly recommended that
+                you use a throwaway email to register your account when testing out
+                the site's user account functionalities.
+            </p>
         </div>
+
         <div class="form-right">
             <h2 class="text-center">Create Account</h2>
             <div asp-validation-summary="All" class="error-msg text-danger text-center"></div>
