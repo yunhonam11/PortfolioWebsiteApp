@@ -1,0 +1,330 @@
+body {
+    background: #757F9A; /* fallback for old browsers */
+    background: -webkit-linear-gradient(to left, #D7DDE8, #757F9A); /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to left, #D7DDE8, #757F9A); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    margin-left: -15%;
+}
+
+.section {
+    width: 95rem;
+}
+
+h3 {
+    color: #585858;
+}
+
+p {
+    color: #383838;
+}
+
+.btn {
+    width: 5rem;
+}
+
+.edit-btn {
+    position: absolute;
+    display: block;
+    margin-top: -2%;
+    margin-left: 85%;
+    color: #606060;
+}
+
+    .edit-btn:hover {
+        cursor: pointer;
+        color: #DC143C;
+    }
+
+.input-field {
+    width: 15rem;
+    padding: 0.5rem;
+    border: none;
+}
+
+/* resume menu */
+.resume-menu {
+    margin-top: 7.5%;
+    margin-left: 12.5%;
+    text-align: center;
+}
+
+    .resume-menu .resume-display {
+        color: #191970;
+        font-weight: bold;
+        float: left;
+        margin-left: 2.5%;
+    }
+
+        .resume-menu .resume-display:hover {
+            cursor: pointer;
+            color: #800000;
+        }
+
+    .resume-menu .add-resume-btn {
+        float: right;
+        color: #191970;
+    }
+
+        .resume-menu .add-resume-btn:hover {
+            cursor: pointer;
+            color: #CD5C5C;
+        }
+
+/* heading */
+.heading {
+    padding: 2.5rem;
+    min-height: 15rem;
+}
+
+    .heading .pic-card {
+        height: 10rem;
+        width: 15rem;
+        border: 0.031rem solid #D3D3D3;
+        border-radius: 50%;
+        box-shadow: 0 0.5rem 1.25rem 0rem #1f1f1f1a;
+        background: white;
+        overflow: hidden;
+        margin-top: 5%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+        .heading .pic-card .pic-input {
+            width: 100rem;
+            height: 100rem;
+            opacity: 0;
+        }
+
+            .heading .pic-card .pic-input:hover {
+                cursor: pointer;
+            }
+
+        .heading .pic-card #pic-background {
+            width: 100%;
+            height: 100%;
+        }
+
+    .heading .name {
+        margin-top: 2.5%;
+        color: #E8E8E8;
+    }
+
+    .heading .subname {
+        color: #707070;
+    }
+
+    .heading .resume-contact {
+        color: #380000;
+        text-decoration: none;
+        display: block;
+        width: 8rem;
+        margin-top: 1.5%;
+        margin-bottom: 1.5%;
+        margin-left: 46%;
+    }
+
+        .heading .resume-contact:hover {
+            cursor: pointer;
+            color: #880000;
+        }
+
+/* about me */
+.aboutme {
+    min-height: 15rem;
+}
+
+    .aboutme .aboutme-p {
+        display: block;
+        margin-top: 3%;
+        margin-bottom: 5%;
+        margin-left: 20%;
+        margin-right: 20%;
+    }
+
+    .aboutme .aboutme-textarea {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 2.5%;
+        resize: none;
+        width: 45rem;
+        height: 5rem;
+        padding: 1rem;
+    }
+
+    .aboutme .aboutme-btns {
+        margin-top: 1%;
+        text-align: center;
+    }
+
+/* objective */
+.objective {
+    min-height: 15rem;
+}
+
+    .objective h3 {
+        text-align: center;
+    }
+
+    .objective .objective-p {
+        display: block;
+        margin-top: 3%;
+        margin-bottom: 5%;
+        margin-left: 20%;
+        margin-right: 20%;
+        text-align: center;
+    }
+
+    .objective .objective-textarea {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 2.5%;
+        resize: none;
+        width: 45rem;
+        height: 5rem;
+        padding: 1rem;
+    }
+
+    .objective .objective-btns {
+        margin-top: 1%;
+        text-align: center;
+    }
+
+/* education */
+.education {
+    min-height: 12.5rem;
+}
+
+    .education .education-text {
+        width: 50rem;
+        height: 6rem;
+        margin-top: 1.5%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+        .education .education-text .diploma {
+            font-weight: bold;
+        }
+
+        .education .education-text .years {
+            float: right;
+        }
+
+    .education .education-delete {
+        display: block;
+        margin-top: -10.5%;
+        margin-left: 102%;
+    }
+
+    .education .education-edit {
+        width: 50rem;
+        height: 5rem;
+        margin-top: 3%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+        .education .education-edit .input-field {
+            display: inline-block;
+            margin-left: 2%;
+        }
+
+        .education .education-edit .education-btns {
+            margin-top: 3%;
+            display: block;
+            text-align: center;
+        }
+
+/* skill */
+.skill {
+    min-height: 12.5rem;
+}
+
+    .skill .skill-text {
+        width: 50rem;
+        height: 3rem;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+        .skill .skill-delete {
+            display: block;
+            margin-top: -3%;
+            margin-left: 100%;
+        }
+
+    .skill .skill-edit {
+        width: 50rem;
+        height: 5rem;
+        margin-top: 3%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+        .skill .skill-edit .skill-inputs {
+            margin-left: 17.5%;
+        }
+
+        .skill .skill-edit .input-field {
+            display: inline-block;
+            margin-left: 2%;
+        }
+
+        .skill .skill-edit .skill-btns {
+            margin-top: 3%;
+            display: block;
+            text-align: center;
+        }
+
+/* experience */
+.experience {
+    min-height: 15rem;
+    margin-bottom: 3%;
+}
+
+    .experience .experience-text {
+        width: 50rem;
+        min-height: 0rem;
+        margin-top: 1.5%;
+        margin-bottom: 5%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+        .experience .experience-text .company {
+            font-weight: bold;
+        }
+
+        .experience .experience-text .years {
+            float: right;
+        }
+
+        .experience .experience-delete {
+            display: block;
+            margin-top: -10.5%;
+            margin-left: 103%;
+        }
+
+    .experience .experience-edit {
+        width: 50rem;
+        height: 5rem;
+        margin-top: 3%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+        .experience .experience-inputs {
+            margin-left: 17.5%;
+        }
+
+        .experience .experience-edit .input-field {
+            display: inline-block;
+            margin-left: 2%;
+        }
+
+        .experience .experience-edit .experience-btns {
+            display: block;
+            text-align: center;
+            margin-top: 2%;
+        }

@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using PortfolioWebsiteApp.Data;
 
@@ -11,9 +12,11 @@ using PortfolioWebsiteApp.Data;
 namespace PortfolioWebsiteApp.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220814025108_resumesnamefix")]
+    partial class resumesnamefix
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -421,9 +424,6 @@ namespace PortfolioWebsiteApp.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Objective")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("PicUrl")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Type")

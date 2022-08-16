@@ -6,7 +6,9 @@ namespace PortfolioWebsiteApp.Models
     {
         [Key]
         public int Id { get; set; }
+        public string? Type { get; set; }
+        public string? PicUrl { get; set; }
+        public string? AboutMe { get; set; }
         public string? Objective { get; set; }
-
     }
 }

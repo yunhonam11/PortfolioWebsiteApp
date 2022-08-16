@@ -16,7 +16,7 @@
                 <td>@Model.adminUsernames.ElementAt(i)</td>
                 <td>@Model.adminNames.ElementAt(i)</td>
                 <td>
-                    <a class="" asp-area="" asp-controller="Profile" asp-action="Index" asp-route-id="@Model.adminUsernames.ElementAt(i)">click me!</a>
+                    <a class="" asp-area="" asp-controller="Profile" asp-action="Index" asp-route-username="@Model.adminUsernames.ElementAt(i)">click me!</a>
                 </td>
             </tr>
         }

@@ -152,7 +152,7 @@ body {
         display: block;
         margin-top: -130%;
         font-size: 4.75rem;
-        color: #DCDCDC;
+        color: #200000;
     }
 
     .content-div .add-logo-div input {
@@ -166,7 +166,7 @@ body {
     .content-div .add-logo-small {
         display: block;
         font-size: 0.75rem;
-        color: #D3D3D3;
+        color: #200000;
         margin-top: -5%;
         margin-left: -7.5%;
     }
@@ -174,7 +174,7 @@ body {
     .content-div .wipe-btn {
         display: block;
         float: right;
-        margin-top: -40%;
+        margin-top: -30%;
         margin-right: 10%;
         width: 8rem;
     }

@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using PortfolioWebsiteApp.Data;
 
@@ -11,9 +12,11 @@ using PortfolioWebsiteApp.Data;
 namespace PortfolioWebsiteApp.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220814023335_resumeinit")]
+    partial class resumeinit
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -326,19 +329,18 @@ namespace PortfolioWebsiteApp.Migrations
                     b.Property<string>("Diploma")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("ResumeId")
+                    b.Property<int?>("ResumeId")
                         .HasColumnType("int");
 
                     b.Property<string>("School")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Type")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Years")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("ResumeId");
 
                     b.ToTable("Educations");
                 });
@@ -357,16 +359,15 @@ namespace PortfolioWebsiteApp.Migrations
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("ResumeId")
+                    b.Property<int?>("ResumeId")
                         .HasColumnType("int");
-
-                    b.Property<string>("Type")
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Years")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("ResumeId");
 
                     b.ToTable("Experiences");
                 });
@@ -423,15 +424,9 @@ namespace PortfolioWebsiteApp.Migrations
                     b.Property<string>("Objective")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("PicUrl")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Type")
-                        .HasColumnType("nvarchar(max)");
-
                     b.HasKey("Id");
 
-                    b.ToTable("Resumes");
+                    b.ToTable("Resume");
                 });
 
             modelBuilder.Entity("PortfolioWebsiteApp.Models.Skill", b =>
@@ -448,13 +443,12 @@ namespace PortfolioWebsiteApp.Migrations
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("ResumeId")
+                    b.Property<int?>("ResumeId")
                         .HasColumnType("int");
 
-                    b.Property<string>("Type")
-                        .HasColumnType("nvarchar(max)");
-
                     b.HasKey("Id");
+
+                    b.HasIndex("ResumeId");
 
                     b.ToTable("Skills");
                 });
@@ -517,6 +511,36 @@ namespace PortfolioWebsiteApp.Migrations
                         .HasForeignKey("AddressID");
 
                     b.Navigation("Address");
+                });
+
+            modelBuilder.Entity("PortfolioWebsiteApp.Models.Education", b =>
+                {
+                    b.HasOne("PortfolioWebsiteApp.Models.Resume", null)
+                        .WithMany("Educations")
+                        .HasForeignKey("ResumeId");
+                });
+
+            modelBuilder.Entity("PortfolioWebsiteApp.Models.Experience", b =>
+                {
+                    b.HasOne("PortfolioWebsiteApp.Models.Resume", null)
+                        .WithMany("Experiences")
+                        .HasForeignKey("ResumeId");
+                });
+
+            modelBuilder.Entity("PortfolioWebsiteApp.Models.Skill", b =>
+                {
+                    b.HasOne("PortfolioWebsiteApp.Models.Resume", null)
+                        .WithMany("Skills")
+                        .HasForeignKey("ResumeId");
+                });
+
+            modelBuilder.Entity("PortfolioWebsiteApp.Models.Resume", b =>
+                {
+                    b.Navigation("Educations");
+
+                    b.Navigation("Experiences");
+
+                    b.Navigation("Skills");
                 });
 #pragma warning restore 612, 618
         }

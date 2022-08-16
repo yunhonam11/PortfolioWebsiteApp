@@ -1,0 +1,222 @@
+﻿@inject SignInManager<AppUser> SignInManager
+@model ResumeViewModel
+
+<link rel="stylesheet" href="~/css/resumes.css" asp-append-version="true">
+<script src="~/js/resumes.js" asp-append-version="true"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+<script src="https://cdn.tiny.cloud/1/ddggx89ife108eekc0217totglloncrxvuhl7za047f4oxsq/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
+
+<body id="god-bod">
+    <div class="resume-menu">
+        <a asp-action="Index" class="resume-display" asp-controller="Resumes" asp-route-resume="Main">Main</a>
+        @if (Model.ResumeTypes != null)
+        {
+            for (int i = 0; i < Model.ResumeTypes.Count(); i++)
+            {
+                if (Model.ResumeTypes.ElementAt(i) != "Main")
+                {
+                    <a asp-action="Index" class="resume-display" asp-controller="Resumes" asp-route-resume="@Model.ResumeTypes.ElementAt(i)">@Model.ResumeTypes.ElementAt(i)</a>
+                }
+            }
+        }
+        
+        @if (SignInManager.IsSignedIn(User) && User.IsInRole("Admin"))
+        {
+            <a onclick="addResume()" class="add-resume-btn" id="add-resume"><i class="bi bi-plus-circle"></i> Create a new resume</a>
+        }
+    </div>
+
+    @* Heading *@
+    <div class="section heading">
+        <div class="pic-card" style="background: url('@Model.PicUrl') no-repeat; background-style: cover;">
+            @if (SignInManager.IsSignedIn(User) && User.IsInRole("Admin"))
+            {
+                <form novalidate id="picture-form">
+                    <input asp-for="PicFile" type="file" onchange="pictureSaver('@Model.Type')" class="pic-input" accept="image/*">
+                </form>
+            }
+        </div>
+        <h1 class="text-center name">Yunho Nam</h1>
+        <h6 class="text-center subname">Also David Nam</h6>
+        <a class="resume-contact" onclick="contactScroll()">Contact in Footer</a>
+    </div>
+
+    @* About Me *@
+    <div class="section aboutme" id="aboutme">
+        <h3 class="text-center">About Me</h3>
+        <div id="aboutme-edit-load1">
+            @if (SignInManager.IsSignedIn(User) && User.IsInRole("Admin"))
+            {
+                <i class="bi bi-pencil-square edit-btn" onclick="aboutmeEditor1()"></i>
+            }
+            <p class="text-center aboutme-p">
+                @Model.AboutMe
+            </p>
+        </div>
+        <div id="aboutme-edit-load2" hidden="hidden">
+            <form novalidate id="aboutme-edit-form">
+                <textarea asp-for="AboutMe" class="aboutme-textarea"></textarea>
+                <div class="aboutme-btns">
+                    <input class="btn btn-primary save-btn" value="Save" onclick="aboutmeSaver('@Model.Type')">
+                    <input class="btn btn-danger cancel-btn ms-3" value="Cancel" onclick="aboutmeEditor2()">
+                </div>
+            </form>
+        </div>
+    </div>
+
+    @*Objective*@
+    <div class="section objective" id="objective">
+        <h3>Objective</h3>
+        <div id="objective-edit-load1">
+            @if (SignInManager.IsSignedIn(User) && User.IsInRole("Admin"))
+            {
+                <i class="bi bi-pencil-square edit-btn" onclick="objectiveEditor1()"></i>
+            }
+            <p class="objective-p">
+                @Model.Objective
+            </p>
+        </div>
+        <div id="objective-edit-load2" hidden="hidden">
+            <form novalidate id="objective-edit-form">
+                <textarea asp-for="Objective" class="objective-textarea"></textarea>
+                <div class="objective-btns">
+                    <input class="btn btn-primary save-btn" value="Save" onclick="objectiveSaver('@Model.Type')">
+                    <input class="btn btn-danger cancel-btn ms-3" value="Cancel" onclick="objectiveEditor2()">
+                </div>
+            </form>
+        </div>
+    </div>
+
+    @*Education*@
+    <div class="section education" id="education">
+        <h3 class="text-center">Education</h3>
+        <div id="education-edit-load1">
+            @if (SignInManager.IsSignedIn(User) && User.IsInRole("Admin"))
+            {
+                <i class="bi bi-plus-circle edit-btn mt-1" onclick="educationEditor1()"></i>
+            }
+            <br>
+            @if (Model.Educations != null)
+            {
+                for(int i = 0; i < Model.Educations.Count(); i++)
+                {
+                    <div class="education-text">
+                        <span class="diploma">@Model.Educations.ElementAt(i)[1]</span>
+                        <span class="years">@Model.Educations.ElementAt(i)[2]</span>
+                        <br>
+                        <span class="school">@Model.Educations.ElementAt(i)[3]</span>
+                        <input class="btn btn-danger education-delete" value="Delete" onclick="deleteEducation('@Model.Educations.ElementAt(i)[0]')">
+                    </div>
+                }
+            }
+        </div>
+        <div id="education-edit-load2" hidden="hidden">
+            <div class="education-edit">
+                <form novalidate id="education-edit-form">
+                    <input asp-for="EducationDiploma" class="input-field diploma-input" placeholder="Enter diploma name" required>
+                    <input asp-for="EducationYears" class="input-field years-input" placeholder="Enter school years" required>
+                    <input asp-for="EducationSchool" class="input-field school-input" placeholder="Enter school name" required>
+                    <div class="education-btns">
+                        <input class="btn btn-primary save-btn" value="Add" onclick="educationSaver('@Model.Type')">
+                        <input class="btn btn-danger cancel-btn ms-3" value="Cancel" onclick="educationEditor2()">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    @*Skills*@
+    <div class="section skill mt-5" id="skill">
+        <h3 class="text-center">Skills</h3>
+        <div id="skill-edit-load1">
+            @if (SignInManager.IsSignedIn(User) && User.IsInRole("Admin"))
+            {
+                <i class="bi bi-plus-circle edit-btn mt-1" onclick="skillEditor1()"></i>
+            }
+            <br>
+            @if (Model.Skills != null)
+            {
+                for (int i = 0; i < Model.Skills.Count(); i++)
+                {
+                    <div class="skill-text">
+                        <b>@Model.Skills.ElementAt(i)[1]:</b> <span class="ms-3 skillList">@Model.Skills.ElementAt(i)[2]</span>
+                        <input class="btn btn-danger skill-delete" value="Delete" onclick="deleteSkill('@Model.Skills.ElementAt(i)[0]')">
+                    </div>
+                }
+            }
+        </div>
+        <div id="skill-edit-load2" hidden="hidden">
+            <div class="skill-edit">
+                <form novalidate id="skill-edit-form">
+                    <div class="skill-inputs">
+                        <input asp-for="SkillName" class="input-field name-input" placeholder="Enter skill name" required>
+                        <input asp-for="SkillList" class="input-field name-input" placeholder="Enter list of skills" required>
+                    </div>
+                    <div class="skill-btns">
+                        <input class="btn btn-primary save-btn" value="Add" onclick="skillSaver('@Model.Type')">
+                        <input class="btn btn-danger cancel-btn ms-3" value="Cancel" onclick="skillEditor2()">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    @*Work Experience*@
+    <div class="section experience mt-5" id="experience">
+
+        <script>        
+            tinymce.init({
+               selector: 'textarea#experience-description',
+               skin: 'bootstrap',
+               plugins: 'lists, link, image, media',
+               toolbar: 'h1 h2 bold italic strikethrough blockquote bullist numlist',
+               menubar: false,
+            });
+
+            $("#experience-btn").click(function () {
+                tinymce.triggerSave(true, true);
+                $("#experience-edit-form").submit();
+            });
+        </script>
+
+        <h3 class="text-center">Work Experience</h3>
+        <div id="experience-edit-load1">
+            @if (SignInManager.IsSignedIn(User) && User.IsInRole("Admin"))
+            {
+                <i class="bi bi-plus-circle edit-btn mt-1" onclick="experienceEditor1()"></i>
+            }
+            <br>
+            @if (Model.Experiences != null)
+            {
+                for (int i = 0; i < Model.Experiences.Count(); i++)
+                {
+                    <div class="experience-text">
+                        <span class="company">@Model.Experiences.ElementAt(i)[1]</span>
+                        <span class="years">@Model.Experiences.ElementAt(i)[2]</span>
+                        <br><br>
+                        <span class="description">@Html.Raw(@Model.Experiences.ElementAt(i)[3])</span>
+                        <input class="btn btn-danger experience-delete" value="Delete" onclick="deleteExperience('@Model.Experiences.ElementAt(i)[0]')">
+                    </div>
+                }
+            }
+        </div>
+        <div id="experience-edit-load2" hidden="hidden">
+            <div class="experience-edit">
+                <form novalidate id="experience-edit-form">
+                    <div class="experience-inputs">
+                        <input asp-for="ExperienceCompany" class="input-field company-input" placeholder="Enter company and job" required>
+                        <input asp-for="ExperienceYears" class="input-field years-input" placeholder="Enter years worked" required>
+                    </div>
+                    <br>
+                    <textarea asp-for="ExperienceDescription" class="description" id="experience-description">
+                        Description of your job
+                    </textarea>
+                    <div class="experience-btns">
+                        <input class="btn btn-primary save-btn" id="experience-btn" value="Add" onclick="experienceSaver('@Model.Type')">
+                        <input class="btn btn-danger cancel-btn ms-3" value="Cancel" onclick="experienceEditor2()">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
