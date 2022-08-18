@@ -21,4 +21,4 @@ My future goal for this project is to complete the implementation of the Blogs p
 with each other. Later down the road, I wish to implement features such as user account settings, notifications, chat, etc. However, at the moment, I will note that I 
 plan on studying Angular, .NET API, and SQL (with relational algebra) for now, so I admit that this project will be currently on the backburner for the most part.
 
-This site uses Microsoft Azure Cloud service as well as Azure SQL server.
+This site is deployed on Microsoft Azure Cloud service and it is linked to an Azure SQL server and database.
